@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
-import new
 import signal
 import sys
+from types import MethodType
 
 from PyQt4.QtCore import QSignalMapper, Qt, QTimer
 from PyQt4.QtGui import QAbstractItemView, QAction, QApplication, QIcon, QKeySequence, QLineEdit, QMainWindow, QSortFilterProxyModel, QStandardItem, QStandardItemModel, QTableView, QToolBar
@@ -146,7 +146,7 @@ def main(icon_spec):
                 action.toggle()
                 return
         old_keyPressEvent(self, event)
-    main_window.keyPressEvent = new.instancemethod(main_window_keyPressEvent, table_view, None)
+    main_window.keyPressEvent = MethodType(main_window_keyPressEvent, table_view)
 
     # enable copy (ctrl+c) name of icon to clipboard
     def table_view_keyPressEvent(self, event, old_keyPressEvent=QTableView.keyPressEvent):
@@ -160,7 +160,7 @@ def main(icon_spec):
                 app.clipboard().setText(icon_name.toString())
                 return
         old_keyPressEvent(self, event)
-    table_view.keyPressEvent = new.instancemethod(table_view_keyPressEvent, table_view, None)
+    table_view.keyPressEvent = MethodType(table_view_keyPressEvent, table_view)
 
     main_window.showMaximized()
     return app.exec_()
