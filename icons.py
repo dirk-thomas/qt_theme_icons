@@ -4,8 +4,10 @@ import signal
 import sys
 from types import MethodType
 
-from PyQt4.QtCore import QSignalMapper, Qt, QTimer
-from PyQt4.QtGui import QAbstractItemView, QAction, QApplication, QIcon, QKeySequence, QLineEdit, QMainWindow, QSortFilterProxyModel, QStandardItem, QStandardItemModel, QTableView, QToolBar
+from PyQt5.QtCore import QSignalMapper, QSortFilterProxyModel, Qt, QTimer
+from PyQt5.QtGui import QIcon, QKeySequence, QStandardItem, QStandardItemModel
+from PyQt5.QtWidgets import QAbstractItemView, QAction, QApplication, QLineEdit, QMainWindow, QTableView, QToolBar
+
 
 def main(icon_spec):
     app = QApplication(sys.argv)
